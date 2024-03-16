@@ -1,27 +1,28 @@
-# How to use the repository
+# How-to
+- Install: `pip install git+https://github.com/lab2048/tm2048.git`
 
-1. Clone the repository
-2. Install the dependencies
+# Description
 
+## TMTool
 
-# How to import the folder into your project(code)?
+* Variables
+  * `setowords_tw`: StopWords of zh-tw, from https://github.com/lab2048/pyCorpus/raw/main/stopwords_tw.txt"
+  * `setowords_cn`: StopWords of zh-cn, from https://github.com/lab2048/pyCorpus/raw/main/stopwords_cn.txt"
 
-1. Locate the folder, If you put the folder under `/Users/jirlong/Dropbox/Programming`
-    ```python
-    import sys
-    sys.path.append(r'/Users/jirlong/Dropbox/Programming')
-    from folder_name import file_name
-    ```
-2. Locate the folder, You may put the folder under your current working directory (the project folder containing your code)
-    ```python
-    from folder_name import file_name
-    ```
-3. Reload library: if you have made changes to the library, you may need to reload the library
-    ```python
-    from importlib import reload
-    import VISToolkit as vis
-    reload(vis)
+* Modules for tokens
+  * `deStopWords(words)`:  e.g. `df['tokens'].apply(TMTool.deStopWords)`
+  * `dePunctuation(words)`:  e.g., `df['tokens'].apply(TMTool.dePunctuation)`
+        
+* Modules for text
+  * `deEmojify(text)` : e.g., `df['text'].apply(TMTool.deEmojify)`
+  * `deSpace(text)`   : e.g., `df['text'].apply(TMTool.deSpace) (Questionable!)`
 
-    import PTTToolkit as ptt
-    reload(ptt)
-    ```
+* Modules for list of tokens
+  * `get_word2vec(words)`: e.g., `TMTool.get_word2vec(df['tokens'])`
+  * `get_common_words(words)`: e.g., `TMTool.get_common_words(df['tokens'],topN=2000)`
+        
+* Modules for plotting
+  * `plot_w2v_tsne_bokeh(w_f, w2v, title="word2vec")`
+    * `w_f`: list of (word, freq) tutple generated from `Counter.most_common()`
+    * `w2v`: wordVector generated from `get_word2vec()`
+
