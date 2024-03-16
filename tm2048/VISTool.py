@@ -2,6 +2,15 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+def highlight_matched_word(pattern, sentence):
+    """
+    The highlight_matched_word() function takes a pattern and a sentence as input 
+    and highlights the matched word.
+    """
+    highlighted_sentence = re.sub(pattern, r'\033[1m\033[91m\g<0>\033[0m', sentence) # red word
+    # highlighted_sentence = re.sub(pattern, r'\033[1m\033[43m\g<0>\033[0m', sentence) # yellow backgorund
+    print(highlighted_sentence)
+
 def plot_counter_plt(counter):
     # Extract the keys and values from the Counter object
     keys = list(counter.keys())

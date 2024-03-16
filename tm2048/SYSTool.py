@@ -56,15 +56,7 @@ def list_module_functions(module):
     return function_list
 
 
-def highlight_matched_word(pattern, sentence):
-    
-    """
-    The highlight_matched_word() function takes a pattern and a sentence as input 
-    and highlights the matched word.
-    """
-    highlighted_sentence = re.sub(pattern, r'\033[1m\033[91m\g<0>\033[0m', sentence) # red word
-    # highlighted_sentence = re.sub(pattern, r'\033[1m\033[43m\g<0>\033[0m', sentence) # yellow backgorund
-    print(highlighted_sentence)
+
 
 if __name__ == "__main__":
     
