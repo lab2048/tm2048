@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 
 import re
+import pkg_resources
 from urllib.request import urlopen
 import unicodedata # for removing Chinese puctuation
 from collections import Counter
@@ -82,10 +83,16 @@ class TMTool:
             'html_tags': html_tags,
         }
 
+    # def __load_stopwords_file(self, filename):
+    #     with open(f'corpus/{filename}', 'r', encoding='utf-8') as file:
+    #         stopwords = file.read().split("\n")[1:]
+    #     return stopwords
+    
     def __load_stopwords_file(self, filename):
-        with open(f'corpus/{filename}', 'r', encoding='utf-8') as file:
-            stopwords = file.read().split("\n")[1:]
-        return stopwords
+        resource_path = f'data/{filename}'
+        stopwords_content = pkg_resources.resource_string(__name__, resource_path)
+        stopwords = stopwords_content.decode('utf-8').splitlines()
+        return stopwords[1:]            
     
     def __load_stopwords_url(self, url):            
         text = urlopen(url).read().decode('utf-8')
