@@ -25,7 +25,6 @@ class TMTool:
         # self.stopwords_cn = self.__load_stopwords_url("https://github.com/lab2048/pyCorpus/raw/main/stopwords_cn.txt")
         self.stopwords_tw = self.__load_stopwords_file("stopwords_tw.txt")
         self.stopwords_cn = self.__load_stopwords_file("stopwords_cn.txt")
-        self.__info()
 
     """
     The highlight_matched_word() function takes a pattern and a sentence as input 
